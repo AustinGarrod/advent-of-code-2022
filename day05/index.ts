@@ -82,12 +82,6 @@ const getInstructions = (): InstructionSet[] => {
 }
 
 const part1 = async () => {
-  const fileStream = fs.createReadStream('./day05/input.txt')
-  const fileLines = readline.createInterface({
-    input: fileStream,
-    crlfDelay: Infinity,
-  })
-
   const piles = [...getPiles()]
   const instructions = getInstructions()
 
@@ -106,4 +100,25 @@ const part1 = async () => {
   console.log(`Your answer for part 1 is: ${toppers}`)
 }
 
+const part2 = async () => {
+  const piles = [...getPiles()]
+  const instructions = getInstructions()
+
+  instructions.forEach((instruction) => {
+    const grabbedElements = piles[instruction.from - 1].splice(
+      -instruction.count,
+      instruction.count
+    )
+    if (grabbedElements) piles[instruction.to - 1].push(...grabbedElements)
+  })
+
+  let toppers = ''
+  piles.forEach((pile) => {
+    toppers += pile.pop()
+  })
+
+  console.log(`Your answer for part 2 is: ${toppers}`)
+}
+
 part1()
+part2()
