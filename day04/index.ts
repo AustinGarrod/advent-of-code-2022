@@ -50,7 +50,7 @@ const part2 = async () => {
     crlfDelay: Infinity,
   })
 
-  let fullyOverlappingGroups = 0
+  let anyOverlappingGroups = 0
 
   for await (const line of fileLines) {
     const firstGroup = line.split(',')[0]
@@ -63,11 +63,11 @@ const part2 = async () => {
       firstJobs.some((job) => secondJobs.includes(job)) ||
       secondJobs.some((job) => firstJobs.includes(job))
     ) {
-      fullyOverlappingGroups += 1
+      anyOverlappingGroups += 1
     }
   }
 
-  console.log(`Total for part two: ${fullyOverlappingGroups}`)
+  console.log(`Total for part two: ${anyOverlappingGroups}`)
 }
 
 part1()
