@@ -1,19 +1,6 @@
-import fs, { readFileSync, ReadStream } from 'fs'
-import readline from 'readline'
+import { readFileSync } from 'fs'
 
 console.clear()
-
-console.log('STARING ==================')
-console.log('')
-console.log('')
-
-// const chunkLines = async (array: string) => {
-//   var results = []
-//   while (array.length) {
-//     results.push(array.splice(0, size))
-//   }
-//   return results
-// }
 
 const getPiles = () => {
   const file = readFileSync('./day05/input.txt', 'utf-8')
