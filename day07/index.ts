@@ -212,10 +212,6 @@ const part2 = () => {
 
   const extractedDirectories = extractDirectories(fileSystem)
 
-  const total = extractedDirectories
-    .filter((dir) => dir.size <= 100000)
-    .reduce((a, b) => a + b.size, 0)
-
   const usedStorage = extractedDirectories[0].parent?.size!
   const freeStorage = 70000000 - usedStorage
   const spaceToFree = 30000000 - freeStorage
